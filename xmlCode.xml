@@ -1,0 +1,835 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Syntax of following line
+Namespace declaration, namespace-prefix:android, namespace url-->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="20dp"
+    android:background="#F5F1835">
+
+    <!-- Title -->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Alina's Calculator"
+        android:textSize="24sp"
+        android:textColor="#b300ff"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:layout_marginBottom="20dp"/>
+
+    <!-- Result Display -->
+    <TextView
+        android:id="@+id/tvResult"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:text="0"
+        android:textSize="32sp"
+        android:gravity="end|center_vertical"
+        android:padding="10dp"
+        android:background="#FFFFFF"
+        android:layout_marginBottom="20dp"/>
+
+    <!-- First Number Input -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="First Number:"
+        android:textSize="16sp"
+        android:textColor="#333333"/>
+
+    <EditText
+        android:id="@+id/etFirstNumber"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="numberDecimal"
+        android:hint="Enter first number"
+        android:padding="10dp"
+        android:background="#FFFFFF"
+        android:layout_marginBottom="15dp"/>
+
+    <!-- Second Number Input -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Second Number:"
+        android:textSize="16sp"
+        android:textColor="#333333"/>
+
+    <EditText
+        android:id="@+id/etSecondNumber"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="numberDecimal"
+        android:hint="Enter second number"
+        android:padding="10dp"
+        android:background="#FFFFFF"
+        android:layout_marginBottom="20dp"/>
+
+    <!-- Buttons Layout -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center">
+
+        <Button
+            android:id="@+id/btnAdd"
+            android:layout_width="0dp"
+            android:layout_height="60dp"
+            android:layout_weight="1"
+            android:text="+"
+            android:textSize="24sp"
+            android:layout_margin="5dp"
+            android:backgroundTint="#4CAF50"/>
+
+        <Button
+            android:id="@+id/btnSubtract"
+            android:layout_width="0dp"
+            android:layout_height="60dp"
+            android:layout_weight="1"
+            android:text="-"
+            android:textSize="24sp"
+            android:layout_margin="5dp"
+            android:backgroundTint="#2196F3"/>
+
+        <Button
+            android:id="@+id/btnMultiply"
+            android:layout_width="0dp"
+            android:layout_height="60dp"
+            android:layout_weight="1"
+            android:text="×"
+            android:textSize="24sp"
+            android:layout_margin="5dp"
+            android:backgroundTint="#FF9800"/>
+
+        <Button
+            android:id="@+id/btnDivide"
+            android:layout_width="0dp"
+            android:layout_height="60dp"
+            android:layout_weight="1"
+            android:text="÷"
+            android:textSize="24sp"
+            android:layout_margin="5dp"
+            android:backgroundTint="#F44336"/>
+    </LinearLayout>
+
+    <!-- Clear Button -->
+    <Button
+        android:id="@+id/btnClear"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:text="Clear"
+        android:textSize="18sp"
+        android:layout_marginTop="15dp"
+        android:backgroundTint="#9E9E9E"/>
+
+</LinearLayout>
+
+
+
+
+
+
+
+    <?xml version="1.0" encoding="utf-8"?>
+
+    <!--
+    =====================================================================
+    LINE 1: XML DECLARATION
+    =====================================================================
+    version="1.0" → XML ka version 1.0 use kar rahe hain (standard hai)
+    encoding="utf-8" → UTF-8 encoding use kar rahe hain (Hindi, English,
+                       Urdu, emoji sab support hoga)
+
+    DRYRUN: Jab Android Studio ye line padhega:
+            1. Samjhega ke ye XML file hai
+            2. UTF-8 mein padhna hai (special characters ke liye)
+            3. File parse karna start karega
+    -->
+
+    <!--
+    =====================================================================
+    LINE 2: LINEARLAYOUT START + NAMESPACE DECLARATION
+    =====================================================================
+    <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+
+    EXPLANATION:
+    - <LinearLayout> → Ek container start kar rahe hain jo cheezo ko
+                       line mein rakhta hai (jaise ek dibba)
+    - xmlns:android → "XML Namespace" - android ki properties kahan se
+                       laani hai ye batata hai
+    - "http://..." → Android ka official URL jahan sab properties defined hain
+
+    DRYRUN: Jab Android ye line dekhega:
+            1. Ek LinearLayout object banayega memory mein
+            2. Ab se jab bhi "android:" dikhe to is URL se properties lega
+            3. Jaise "android:layout_width" ka matlab hai is URL se lo
+
+    NAMESPACE KA MATLAB:
+            "android:" ek shortcut hai. Poora matlab hai:
+            "http://schemas.android.com/apk/res/android/layout_width"
+            Par hum shortcut use karte hain: "android:layout_width"
+    -->
+
+    <!--
+    =====================================================================
+    LINE 3: LAYOUT WIDTH
+    =====================================================================
+        android:layout_width="match_parent"
+
+    EXPLANATION:
+    - layout_width → Element ki width kitni hogi
+    - match_parent → Jitni parent (iske andar wala container) ki width hai,
+                     utni hi le lo (puri screen width)
+
+    DRYRUN: Jab Android ye property padhega:
+            1. Is LinearLayout ki width set karni hai
+            2. Value = "match_parent" means parent jitna wide hona hai
+            3. Parent = poori screen (kyunki ye root layout hai)
+            4. Internally isko -1 se replace kar dega (match_parent = -1)
+            5. Jab screen render hogi, to screen ki width nikal kar yahan laga dega
+
+    INTERNAL WORKING:
+            match_parent = -1 (Android source code mein constant hai)
+            Jab layout banega: width = getParent().getWidth()
+    -->
+
+    <!--
+    =====================================================================
+    LINE 4: LAYOUT HEIGHT
+    =====================================================================
+        android:layout_height="match_parent"
+
+    EXPLANATION:
+    - layout_height → Element ki height kitni hogi
+    - match_parent → Parent jitni height le lo
+
+    DRYRUN:
+            1. Height set karni hai is layout ki
+            2. Parent jitni height chahiye
+            3. Parent = screen, to full screen height milegi
+            4. Internally height = -1 (match_parent constant)
+            5. Jab layout hoga: height = screen.getHeight()
+    -->
+
+    <!--
+    =====================================================================
+    LINE 5: ORIENTATION
+    =====================================================================
+        android:orientation="vertical"
+
+    EXPLANATION:
+    - orientation → Andar wale elements (children) ko kaise arrange karna hai
+    - vertical → Ek ke neeche ek (jaise queue mein log)
+    - horizontal → Ek ke baad ek (jaise class mein bench par)
+
+    DRYRUN:
+            1. LinearLayout ke andar jo bhi elements aayenge
+            2. Unko vertically arrange karna hai (upar se neeche)
+            3. Internally: orientation = 1 (vertical = 1, horizontal = 0)
+            4. Jab add karoge TextView, EditText, button, sab neeche aate jayenge
+
+    EXAMPLE: Jaise plate mein rakhna ho:
+            vertical = roti, phir sabzi, phir salad (ek upar ek)
+            horizontal = roti, sabzi, salad (ek saath, bagal mein)
+    -->
+
+    <!--
+    =====================================================================
+    LINE 6: PADDING
+    =====================================================================
+        android:padding="20dp"
+
+    EXPLANATION:
+    - padding → Element ke andar ki taraf kitni jagah chhodni hai
+    - 20dp → 20 density-independent pixels jagah chhoro
+    - dp → Density-independent Pixels (har screen par same size dikhega)
+
+    DRYRUN:
+            1. Is LinearLayout ke andar jo bhi aayega
+            2. Uske chaaron taraf (upar, neeche, left, right) 20dp gap chhoro
+            3. Android calculate karega: 20dp = 20 * (screen_density/160)
+            4. Agar screen density 320dpi hai: 20 * 2 = 40 pixels jagah
+            5. Ye jagah border aur content ke beech mein hogi
+
+    PADDING vs MARGIN:
+            Padding = andar ki jagah (kurte mein pocket andar)
+            Margin = bahar ki jagah (do plates ke beech mein gap)
+    -->
+
+    <!--
+    =====================================================================
+    LINE 7: BACKGROUND COLOR
+    =====================================================================
+        android:background="#F5F1835"
+
+    EXPLANATION:
+    - background → Is element ka background color set karo
+    - #F5F1835 → Hexadecimal color code
+
+    DRYRUN:
+            1. Android #F5F1835 ko parse karega
+            2. # ka matlab hexadecimal number hai
+            3. F5 = Red component ka value (245)
+            4. F1 = Green component (241)
+            5. 83 = Blue component (131)
+            6. 5 = Alpha/transparency? (Actually ye 6 digit hona chahiye,
+                   yahan 7 digits hain - probably typo)
+            7. Is color ko apply karega background par
+
+    COLOR FORMAT:
+            #RRGGBB ya #AARRGGBB
+            RR = Red (00-FF), GG = Green, BB = Blue, AA = Alpha
+            #FF0000 = Red, #00FF00 = Green, #0000FF = Blue
+    -->
+
+    <!--
+    =====================================================================
+    LINE 8: TITLE TEXTVIEW START
+    =====================================================================
+        <TextView
+
+    EXPLANATION:
+    - TextView → Text display karne wala element
+    - <TextView → TextView ka start tag
+
+    DRYRUN:
+            1. Ek naya TextView object banega
+            2. Ye text dikhayega screen par
+            3. Iska parent ye LinearLayout hoga
+    -->
+
+    <!--
+    =====================================================================
+    LINE 9: TITLE WIDTH
+    =====================================================================
+        android:layout_width="match_parent"
+
+    EXPLANATION:
+    - width = parent jitni (puri screen width)
+
+    DRYRUN:
+            1. Is TextView ki width parent jitni rakho
+            2. Parent = LinearLayout (jo poori screen hai)
+            3. Width = screen ki width
+    -->
+
+    <!--
+    =====================================================================
+    LINE 10: TITLE HEIGHT
+    =====================================================================
+        android:layout_height="wrap_content"
+
+    EXPLANATION:
+    - wrap_content → Jitna content (text) hai utni hi height lo
+
+    DRYRUN:
+            1. Height set karni hai
+            2. "wrap_content" ka matlab: text jitna bada hai, utni height do
+            3. Andar text "Alina's Calculator" hai, iski height nikal lo
+            4. Sirf utni jagah lo, extra nahi
+            5. Internally: height = -2 (wrap_content constant)
+    -->
+
+    <!--
+    =====================================================================
+    LINE 11: TITLE TEXT
+    =====================================================================
+        android:text="Alina's Calculator"
+
+    EXPLANATION:
+    - text → Jo dikhana hai wo text
+
+    DRYRUN:
+            1. Is TextView mein "Alina's Calculator" likho
+            2. Ye string display hogi
+            3. Internally: char array banega: ['A','l','i','n','a','\'','s',' ','C',...]
+    -->
+
+    <!--
+    =====================================================================
+    LINE 12: TEXT SIZE
+    =====================================================================
+        android:textSize="24sp"
+
+    EXPLANATION:
+    - textSize → Text kitna bada likhna hai
+    - sp → Scale-independent Pixels (user ke font setting se adjust hota hai)
+    - 24sp → 24 scaled pixels
+
+    DRYRUN:
+            1. Text ka size 24sp rakho
+            2. User ne agar font size "Large" kiya hai to adjust hoga
+            3. Agar default font scale = 1.0, to 24dp ke barabar
+            4. Agar user ne 1.3x kiya, to 24 * 1.3 = 31.2dp hoga
+
+    sp vs dp:
+            sp - text ke liye (respects user preferences)
+            dp - buttons, layouts ke liye (fixed size)
+    -->
+
+    <!--
+    =====================================================================
+    LINE 13: TEXT COLOR
+    =====================================================================
+        android:textColor="#b300ff"
+
+    EXPLANATION:
+    - textColor → Text ka color konsa hoga
+    - #b300ff → Purple shade (b3=179 red, 00=0 green, ff=255 blue)
+
+    DRYRUN:
+            1. #b300ff ko parse karo
+            2. Red = 0xb3 = 179
+            3. Green = 0x00 = 0
+            4. Blue = 0xff = 255
+            5. Mix karo = Purple color
+            6. Text is rang mein dikhega
+    -->
+
+    <!--
+    =====================================================================
+    LINE 14: TEXT STYLE
+    =====================================================================
+        android:textStyle="bold"
+
+    EXPLANATION:
+    - textStyle → Text ka style (bold, italic, normal)
+    - bold → Aksar moti (thick) karo
+
+    DRYRUN:
+            1. Text style bold set karo
+            2. Android font ka bold version dhundhega
+            3. Agar bold font hai to use karega
+            4. Nahin to normal font ko artificially bold karega
+            5. Internally: Typeface.BOLD flag set hoga
+    -->
+
+    <!--
+    =====================================================================
+    LINE 15: GRAVITY
+    =====================================================================
+        android:gravity="center"
+
+    EXPLANATION:
+    - gravity → Andar ke text ko kahan rakho
+    - center → Bilkul beech mein
+
+    DRYRUN:
+            1. Text ko is TextView ke andar center karo
+            2. Horizontally center (left-right beech)
+            3. Vertically center (upar-neeche beech)
+            4. Internally: gravity flags combine honge
+    -->
+
+    <!--
+    =====================================================================
+    LINE 16: MARGIN BOTTOM
+    =====================================================================
+        android:layout_marginBottom="20dp"
+
+    EXPLANATION:
+    - layout_marginBottom → Neeche ki taraf kitni jagah chhodni hai
+    - 20dp → 20 dp jagah chhoro
+
+    DRYRUN:
+            1. Is TextView ke neeche 20dp ka gap chhoro
+            2. Ye gap agle element se pehle hoga
+            3. Android calculate karega: 20 * density pixels
+            4. Is TextView draw karne ke baad, 20dp jagah chhodni hai
+            5. Phir agla element aayega
+    -->
+
+    <!--
+    =====================================================================
+    LINE 17: RESULT TEXTVIEW START
+    =====================================================================
+        <TextView
+            android:id="@+id/tvResult"
+
+    EXPLANATION:
+    - id → Is element ko ek unique naam do
+    - @+id/tvResult → Naya ID banao jiska naam tvResult hai
+
+    DRYRUN:
+            1. @ = resource, + = naya banao, id = type, tvResult = naam
+            2. Android R.java file mein ek entry banayega:
+               public static final int tvResult = 0x7F080012;
+            3. Ab Java mein findViewById(R.id.tvResult) se ye mil jayega
+            4. Is ID se hum baad mein is TextView ko change kar sakenge
+    -->
+
+    <!--
+    =====================================================================
+    LINE 18-19: RESULT WIDTH, HEIGHT
+    =====================================================================
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+
+    EXPLANATION:
+    - width = parent jitni
+    - height = 80dp fixed
+
+    DRYRUN:
+            1. Width parent jitni rakho
+            2. Height fixed 80dp rakho (screen density ke hisaab se pixels mein convert hoga)
+            3. Chaahe text chhota ho ya bada, height 80dp hi rahegi
+    -->
+
+    <!--
+    =====================================================================
+    LINE 20: RESULT TEXT
+    =====================================================================
+        android:text="0"
+
+    EXPLANATION:
+    - Start mein "0" dikhao
+
+    DRYRUN:
+            1. Jab app khologe, initially "0" dikhega
+            2. Baad mein Java code ise badal dega
+    -->
+
+    <!--
+    =====================================================================
+    LINE 21: RESULT TEXT SIZE
+    =====================================================================
+        android:textSize="32sp"
+
+    EXPLANATION:
+    - Bada text (32sp) - result clearly dikhe
+
+    DRYRUN:
+            1. Result number bada dikhana hai
+            2. 32sp size set karo
+            3. User ke font setting ke saath adjust hoga
+    -->
+
+    <!--
+    =====================================================================
+    LINE 22: RESULT GRAVITY
+    =====================================================================
+        android:gravity="end|center_vertical"
+
+    EXPLANATION:
+    - end = right side mein (left-to-right languages mein)
+    - center_vertical = vertically center mein
+    - | = OR operator (dono properties combine karo)
+
+    DRYRUN:
+            1. Text ko horizontally right mein rakho
+            2. Vertically center mein rakho
+            3. Jaise calculator mein result right side mein dikhta hai
+            4. Internally: FLAG_END (0x800005) OR FLAG_CENTER_VERTICAL (0x10)
+                          = 0x800015 combine flag
+    -->
+
+    <!--
+    =====================================================================
+    LINE 23: RESULT PADDING
+    =====================================================================
+        android:padding="10dp"
+
+    EXPLANATION:
+    - Andar ki taraf 10dp jagah chhoro
+
+    DRYRUN:
+            1. Text aur border ke beech mein 10dp gap
+            2. Chaaron taraf same gap
+            3. Text border se chipka nahin dikhega
+    -->
+
+    <!--
+    =====================================================================
+    LINE 24: RESULT BACKGROUND
+    =====================================================================
+        android:background="#FFFFFF"
+
+    EXPLANATION:
+    - Background white karo
+
+    DRYRUN:
+            1. #FFFFFF = pure white
+            2. Red=255, Green=255, Blue=255
+            3. Result white background par dikhega
+    -->
+
+    <!--
+    =====================================================================
+    LINE 25: RESULT MARGIN BOTTOM
+    =====================================================================
+        android:layout_marginBottom="20dp"/>
+
+    EXPLANATION:
+    - Neeche 20dp gap chhoro
+    - /> → Ye TextView yahan khatam (self-closing tag)
+
+    DRYRUN:
+            1. Result TextView ke neeche 20dp gap
+            2. Agla element is gap ke baad aayega
+    -->
+
+    <!--
+    =====================================================================
+    LINE 26-27: FIRST NUMBER LABEL
+    =====================================================================
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="First Number:"
+            android:textSize="16sp"
+            android:textColor="#333333"/>
+
+    EXPLANATION:
+    - Sirf label hai (user input nahi lega)
+    - width/height wrap_content - text jitna jagah
+    - textSize 16sp - thoda chhota text
+    - textColor #333333 - dark grey
+
+    DRYRUN:
+            1. "First Number:" text dikhao
+            2. Jitna text hai utni jagah lo
+            3. Dark grey color mein dikhao
+            4. Iske neeche EditText aayega
+    -->
+
+    <!--
+    =====================================================================
+    LINE 28-36: FIRST NUMBER INPUT FIELD
+    =====================================================================
+        <EditText
+            android:id="@+id/etFirstNumber"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="numberDecimal"
+            android:hint="Enter first number"
+            android:padding="10dp"
+            android:background="#FFFFFF"
+            android:layout_marginBottom="15dp"/>
+
+    EXPLANATION:
+    - EditText → User input le sakta hai
+    - id = etFirstNumber (Java mein use karenge)
+    - inputType="numberDecimal" → Sirf numbers aur decimal point
+    - hint → Jab kuch na likha ho to ye grey text dikhe
+    - padding → Andar ki jagah text ke liye
+    - background white
+    - marginBottom = 15dp neeche gap
+
+    DRYRUN:
+            1. Ek input field banao
+            2. ID assign karo: R.id.etFirstNumber
+            3. Width screen jitni
+            4. Height text jitni (wrap_content)
+            5. Keyboard sirf numbers dikhayega (letters nahi)
+            6. Initially "Enter first number" dikhega grey mein
+            7. User click karega to hint gayab ho jayega
+            8. Jo bhi type karega, wo text field mein aayega
+            9. Neeche 15dp gap chhoro
+    -->
+
+    <!--
+    =====================================================================
+    LINE 37-44: SECOND NUMBER LABEL AND INPUT (Similar to first)
+    =====================================================================
+        <TextView...>Second Number:</TextView>
+
+        <EditText
+            android:id="@+id/etSecondNumber"
+            .../>
+
+    EXPLANATION:
+    - Bilkul same as first number
+    - Sirf ID different: etSecondNumber
+    - Hint different: "Enter second number"
+
+    DRYRUN: Same as first number field
+    -->
+
+    <!--
+    =====================================================================
+    LINE 45: BUTTONS LAYOUT START
+    =====================================================================
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center">
+
+    EXPLANATION:
+    - ANDAR WALA LinearLayout (buttons arrange karne ke liye)
+    - width = screen jitni
+    - height = content jitni (buttons ki height)
+    - orientation = horizontal (left to right)
+    - gravity = center (buttons ko center mein rakho)
+
+    DRYRUN:
+            1. Naya LinearLayout banao (andar wala)
+            2. Ye 4 buttons ko ek line mein rakhne ke liye
+            3. Width poori screen
+            4. Height buttons jitni
+            5. Buttons left to right arrange honge
+            6. Sab buttons center mein honge
+    -->
+
+    <!--
+    =====================================================================
+    LINE 46-53: ADD BUTTON
+    =====================================================================
+            <Button
+                android:id="@+id/btnAdd"
+                android:layout_width="0dp"
+                android:layout_height="60dp"
+                android:layout_weight="1"
+                android:text="+"
+                android:textSize="24sp"
+                android:layout_margin="5dp"
+                android:backgroundTint="#4CAF50"/>
+
+    EXPLANATION:
+    - Button → Click karne wala button
+    - id = btnAdd (addition ke liye)
+    - width = 0dp + weight=1 → saare buttons equal width
+    - height = 60dp fixed
+    - weight=1 → 1 part weight (4 buttons, to 1/4 screen width)
+    - text = "+" plus sign
+    - textSize = 24sp
+    - margin = 5dp (chaaron taraf 5dp gap)
+    - backgroundTint = green (#4CAF50)
+
+    DRYRUN:
+            1. Button banao
+            2. ID do: btnAdd
+            3. Width 0 rakho (matlab weight use karo)
+            4. Height 60dp rakho
+            5. Weight 1 do (saare buttons equal)
+            6. Jab layout hoga:
+               - Total weight = 4 (4 buttons)
+               - Screen width = 1080 pixels
+               - Har button width = 1080 * 1/4 = 270 pixels
+            7. Button par "+" likho
+            8. Har taraf 5dp margin do
+            9. Color green lagao
+    -->
+
+    <!--
+    =====================================================================
+    LINE 54-61: SUBTRACT BUTTON
+    =====================================================================
+            <Button
+                android:id="@+id/btnSubtract"
+                android:layout_width="0dp"
+                android:layout_height="60dp"
+                android:layout_weight="1"
+                android:text="-"
+                android:textSize="24sp"
+                android:layout_margin="5dp"
+                android:backgroundTint="#2196F3"/>
+
+    EXPLANATION:
+    - Same as Add button
+    - Different ID: btnSubtract
+    - Different text: "-"
+    - Different color: blue (#2196F3)
+
+    DRYRUN: Same as Add button, but subtraction ke liye
+    -->
+
+    <!--
+    =====================================================================
+    LINE 62-69: MULTIPLY BUTTON
+    =====================================================================
+            <Button
+                android:id="@+id/btnMultiply"
+                android:layout_width="0dp"
+                android:layout_height="60dp"
+                android:layout_weight="1"
+                android:text="×"
+                android:textSize="24sp"
+                android:layout_margin="5dp"
+                android:backgroundTint="#FF9800"/>
+
+    EXPLANATION:
+    - ID: btnMultiply
+    - text: "×" (multiplication sign, 'x' nahi)
+    - color: orange (#FF9800)
+
+    NOTE: "×" special character hai, 'x' se alag
+    -->
+
+    <!--
+    =====================================================================
+    LINE 70-77: DIVIDE BUTTON
+    =====================================================================
+            <Button
+                android:id="@+id/btnDivide"
+                android:layout_width="0dp"
+                android:layout_height="60dp"
+                android:layout_weight="1"
+                android:text="÷"
+                android:textSize="24sp"
+                android:layout_margin="5dp"
+                android:backgroundTint="#F44336"/>
+
+    EXPLANATION:
+    - ID: btnDivide
+    - text: "÷" (division sign)
+    - color: red (#F44336)
+    -->
+
+    <!--
+    =====================================================================
+    LINE 78: BUTTONS LAYOUT END
+    =====================================================================
+        </LinearLayout>
+
+    EXPLANATION:
+    - Andar wala LinearLayout yahan khatam hota hai
+    - Ab 4 buttons ka group complete hua
+    -->
+
+    <!--
+    =====================================================================
+    LINE 79-86: CLEAR BUTTON
+    =====================================================================
+        <Button
+            android:id="@+id/btnClear"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:text="Clear"
+            android:textSize="18sp"
+            android:layout_marginTop="15dp"
+            android:backgroundTint="#9E9E9E"/>
+
+    EXPLANATION:
+    - ID: btnClear
+    - width = match_parent (puri screen)
+    - height = 60dp
+    - text = "Clear"
+    - textSize = 18sp (thoda chhota)
+    - marginTop = 15dp (upar se gap)
+    - backgroundTint = grey (#9E9E9E)
+
+    DRYRUN:
+            1. Clear button banao
+            2. Poori width do
+            3. 60dp height do
+            4. "Clear" text likho
+            5. Upar se 15dp gap chhoro (buttons se thoda door)
+            6. Grey color do
+    -->
+
+    <!--
+    =====================================================================
+    LINE 87: MAIN LAYOUT END
+    =====================================================================
+    </LinearLayout>
+
+    EXPLANATION:
+    - Sabse bahar wala LinearLayout (main container) yahan khatam
+    - Poori layout definition complete
+    -->
