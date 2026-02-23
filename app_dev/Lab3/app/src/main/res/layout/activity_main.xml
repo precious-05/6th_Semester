@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Syntax of following line
+Namespace declaration, namespace-prefix:android, namespace url-->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".MainActivity"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#0CD40000"
+    android:orientation="vertical"
+    android:padding="18dp">
+
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="359dp"
+        android:layout_height="201dp"
+        android:layout_marginTop="30dp"
+        android:contentDescription="Hi, This is alexa"
+        android:src="@drawable/w1" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="355dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="30dp"
+        android:fontFamily="cursive"
+        android:text="Unit Converter"
+        android:textAlignment="center"
+        android:textColor="#009688"
+        android:textSize="28sp"
+        android:textStyle="bold" />
+
+    <EditText
+        android:id="@+id/editTextNumber"
+        android:layout_width="353dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:ems="10"
+        android:fontFamily="serif"
+        android:hint="Enter the number"
+        android:inputType="number"
+        android:paddingTop="20dp"
+        android:paddingEnd="20dp"
+        android:paddingRight="20dp"
+        android:paddingBottom="20dp"
+        android:textColorHint="#7A8080"
+        android:textSize="16sp" />
+
+    <Spinner
+        android:id="@+id/spinner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:padding="20dp" />
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Button" />
+
+    <TextView
+        android:id="@+id/result"
+        android:layout_width="355dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="30dp"
+        android:fontFamily="cursive"
+        android:text="Result"
+        android:textAlignment="center"
+        android:textColor="#009688"
+        android:textSize="28sp"
+        android:textStyle="bold" />
+</LinearLayout>
+
+
